@@ -1,9 +1,31 @@
 const kingdom = new Kingdom();
+
+const used_ids = {};
+const player = new Player(getId());
+
 const cx = document.getElementById('canvas').getContext('2d');
+const menu_h = document.getElementById('health');
+const menu_$ = document.getElementById('money');
+const menu_j = document.getElementById('job');
+const menu_n = document.getElementById('name');
 let open_level = kingdom;
+
+function getId() {
+    let id = '';
+    let found = false;
+    do {
+        id = Math.floor(Math.random() * 1000000).toString();
+        if (used_ids[id] != true) {
+            found = true;
+        }
+    } while (!found);
+    used_ids[id] = true;
+    return id;
+}
 
 window.onload = () => {
     resize();
+    loadMenu();
     loadMap(open_level);
 }
 
@@ -14,6 +36,12 @@ window.onresize = () => {
 function resize() {
     let game_w = document.getElementById('header').offsetWidth;
     document.getElementById('body').style = 'margin: auto; width: ' + game_w + ';';
+}
+
+function loadMenu() {
+    menu_h.innerText = player.health;
+    menu_$.innerText = player.money;
+    menu_n.innerText = player.name;
 }
 
 function loadMap(level) {

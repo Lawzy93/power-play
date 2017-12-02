@@ -10,6 +10,38 @@ body {
     background-color: slategray;
 }
 
+.button, .icon, .text{
+    height: 5vh;
+    line-height: 5vh;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.icon {
+    color: darkred;
+    width: 5vh;
+}
+
+.button {
+    width: 5vh;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #ccc;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
 header {
     width: 120vh;
     height: 10vh;
@@ -17,8 +49,10 @@ header {
 }
 
 .game-menu, .game-status {
-    width: 120vh;
+    width: 116vh; /* 120 - 4 from padding */
     height: 5vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
     background-color: lightgray;
 }
 
@@ -43,13 +77,18 @@ canvas {
     width: 20vh;
     height: 20vh;
     float: left;
+    cursor: pointer;
+}
+
+.game-square:hover {
+    background-color: rgba(130, 190, 243, 0.281);
 }
 
 .game-panel {
     width: 39vh;
     height: 80vh;
     float: right;
-    background-color: lightgrey;
+    background-color: whitesmoke;
 }
 
 .float-container::after {
@@ -62,6 +101,11 @@ canvas {
     header {
         width: 60vw;
         height: 10vw;
+    }
+
+    .button, .icon{
+        width: 5vw;
+        height: 5vw;
     }
     
     .game-menu, .game-status {

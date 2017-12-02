@@ -1,0 +1,3 @@
+class Ai extends Person {
+    
+}
