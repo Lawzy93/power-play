@@ -3,12 +3,16 @@ const kingdom = new Kingdom();
 const used_ids = {};
 const player = new Player(getId());
 
+const ai_people = {};
+
 const cx = document.getElementById('canvas').getContext('2d');
+const menu_d = document.getElementById('day');
 const menu_h = document.getElementById('health');
 const menu_$ = document.getElementById('money');
 const menu_j = document.getElementById('job');
 const menu_n = document.getElementById('name');
 let open_level = kingdom;
+let day = 0;
 
 function getId() {
     let id = '';
@@ -39,8 +43,10 @@ function resize() {
 }
 
 function loadMenu() {
+    menu_d.innerText = day;
     menu_h.innerText = player.health;
     menu_$.innerText = player.money;
+    menu_j.innerText = player.job;
     menu_n.innerText = player.name;
 }
 
@@ -50,14 +56,14 @@ function loadMap(level) {
     for(let i = 0; i < 16; i++) {
         document.getElementById(i).onclick = null;
         if (level.map[i] != undefined) {
-            drawImg(level.map[i].sprite, i);
+            draw_image(level.map[i].sprite, i);
             if (level.map[i].type != 'building') {
                 document.getElementById(i).onclick = (e) => {
                     loadMap(open_level.map[e.srcElement.id]);
                 }
             }
         } else {
-            drawImg(img_empty, i);
+            draw_image(img_empty, i);
         }
     }
 }
@@ -68,8 +74,15 @@ function goUpLevel() {
     }
 }
 
-function drawImg(img, cell) {
-    let x = (cell * 512) % 2048;
-    let y = Math.floor((cell * 512) / 2048) * 512;
-    cx.drawImage(img, x, y);
+function nextDay() {
+    day++;
+
+    for (person in ai_people) {
+
+    }
+
+    player.adjustHealth(Math.floor(Math.random() * 8) - 3);
+
+    loadMenu();
+    loadMap(open_level);
 }

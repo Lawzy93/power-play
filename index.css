@@ -91,6 +91,30 @@ canvas {
     background-color: whitesmoke;
 }
 
+.game-panel-button, .game-panel-next {
+    height: 5vh;
+    line-height: 5vh;
+    width: 37vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: left;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.game-panel-next {
+    text-align: right;
+    position: absolute;
+    bottom: 5vh;
+}
+
+.game-panel-button:hover, .game-panel-next:hover {
+    background-color: #ccc;
+}
+
 .float-container::after {
     content: "";
     clear: both;

@@ -1,7 +1,8 @@
 <html>
     <head>
         <link rel="stylesheet" href="index.css" />
-        <script src="image_loader.js"></script>
+        <script src="js/image_loader.js"></script>
+        <script src="js/draw_functions.js"></script>
 
         <script src="objects/person.js"></script>
         <script src="objects/player.js"></script>
@@ -16,6 +17,8 @@
         <header id="header">Power Play</header>
         <div class="game-menu">
             <div class="button left" onclick="goUpLevel();">^</div>
+            <div class="icon left">D</div>
+            <div class="text left" id="day">0</div>
 
             <!-- reverse order to diplay from right -->
             <div class="text right" id="money">0</div>
@@ -48,7 +51,9 @@
                 <div class="game-square" id="14"></div>
                 <div class="game-square" id="15"></div>
             </div>
-            <div class="game-panel"></div>
+            <div class="game-panel">
+                <div class="game-panel-next" onclick="nextDay();">Next Day --></div>
+            </div>
         </div>
         <div class="game-status">
             <div class="icon left">&gt;</div>
