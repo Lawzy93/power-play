@@ -1,8 +1,40 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    </head>
-    <body>
         
+        <link rel="stylesheet" href="index.css" />
+        <script src="image_loader.js"></script>
+        <script src="objects/kingdom.js"></script>
+        <script src="objects/town.js"></script>
+        <script src="objects/plot.js"></script>
+    </head>
+    <body id="body">
+        <header id="header">Power Play</header>
+        <div class="game-menu">
+            <div onclick="goUpLevel();">^</div>
+        </div>
+        <div class="float-container">
+            <div class="game-map float-container">
+                <div class='game-canvas' ><canvas id="canvas" width="2048" height="2048">HTML5 Canvas Not Supported</canvas></div>
+                <div class="game-square" id="0"></div>
+                <div class="game-square" id="1"></div>
+                <div class="game-square" id="2"></div>
+                <div class="game-square" id="3"></div>
+                <div class="game-square" id="4"></div>
+                <div class="game-square" id="5"></div>
+                <div class="game-square" id="6"></div>
+                <div class="game-square" id="7"></div>
+                <div class="game-square" id="8"></div>
+                <div class="game-square" id="9"></div>
+                <div class="game-square" id="10"></div>
+                <div class="game-square" id="11"></div>
+                <div class="game-square" id="12"></div>
+                <div class="game-square" id="13"></div>
+                <div class="game-square" id="14"></div>
+                <div class="game-square" id="15"></div>
+            </div>
+            <div class="game-panel"></div>
+        </div>
+        <div class="game-status">Status</div>
+        <script src="index.js"></script>
     </body>
 </html>
