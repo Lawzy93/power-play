@@ -4,6 +4,7 @@ class Plot {
         this.sprite = img_plot;
         this.map = [];
         this.parent = parent;
+        this.owner = undefined;
         let r = Math.floor(Math.random() * 5);
         for (let i = 0; i <= r; i++) {
             let item = '';
@@ -27,5 +28,9 @@ class Plot {
             } while (!map_loc_found);
 
         }
+    }
+
+    setOwner(person) {
+        this.owner = person;
     }
 }

@@ -2,6 +2,7 @@ class Kingdom {
     constructor() {
         this.type = 'kingdom';
         this.map = [];
+        this.king = undefined;
         let r = Math.floor(Math.random() * 5);
         for (let i = 0; i <= r; i++) {
             let map_loc_found = false;
@@ -14,5 +15,9 @@ class Kingdom {
             } while (!map_loc_found);
 
         }
+    }
+
+    setKing(person) {
+        this.king = person;
     }
 }

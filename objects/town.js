@@ -4,6 +4,7 @@ class Town {
         this.sprite = img_town;
         this.map = [];
         this.parent = parent;
+        this.lord = undefined;
         let r = Math.floor(Math.random() * 5);
         for (let i = 0; i <= r; i++) {
             let map_loc_found = false;
@@ -15,5 +16,9 @@ class Town {
                 }
             } while (!map_loc_found);
         }
+    }
+
+    setLord(person) {
+        this.lord = person;
     }
 }
