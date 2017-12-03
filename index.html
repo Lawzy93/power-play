@@ -1,5 +1,11 @@
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="for Ludum Dare #40 - The more you have, the worse it is.">
+        <meta name="keywords" content="LDJAM, Ludum Dare, Power Play, Game">
+        <meta name="author" content="Michael Laws (Lawzy93)">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link rel="stylesheet" href="index.css" />
         <script src="js/image_loader.js"></script>
         <script src="js/draw_functions.js"></script>
@@ -53,6 +59,21 @@
                 <div class="game-square" id="15"></div>
             </div>
             <div class="game-panel">
+                <label class="game-panel-radio">
+                    <input type="radio" name="day-action" value="0" />
+                    <div id="action0_text">Option 1</div>
+                </label>
+                <label class="game-panel-radio">
+                    <input type="radio" name="day-action" value="1" />
+                    <div id="action1_text">Option 2</div>
+                </label>
+                <label class="game-panel-radio">
+                    <input type="radio" name="day-action" value="2" />
+                    <div id="action2_text">Option 3</div>
+                </label>
+                
+                <hr>
+
                 <div class="game-panel-next" onclick="nextDay();">Next Day --></div>
             </div>
         </div>

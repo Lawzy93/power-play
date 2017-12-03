@@ -5,16 +5,19 @@ class Plot {
         this.map = [];
         this.parent = parent;
         this.owner = undefined;
+        this.manager = undefined;
+        this.slaves = [];
+        this.workers = [];
         let r = Math.floor(Math.random() * 5);
         for (let i = 0; i <= r; i++) {
             let item = '';
             let r_item = Math.floor(Math.random() * 2);
             switch (r_item) {
                 case 0:
-                    item = {type: 'building', sprite: img_wood};
+                    item = {type: 'building', name: 'Wood', sprite: img_wood};
                     break;
                 case 1: 
-                    item = {type: 'building', sprite: img_house};
+                    item = {type: 'building', name: 'House', sprite: img_house};
                     break;
             }
 
@@ -32,5 +35,9 @@ class Plot {
 
     setOwner(person) {
         this.owner = person;
+    }
+
+    setManager(person) {
+        this.manager = person;
     }
 }

@@ -18,6 +18,7 @@ body {
     text-decoration: none;
     text-align: center;
     white-space: nowrap;
+    cursor: default;
 }
 
 .icon {
@@ -91,13 +92,13 @@ canvas {
     background-color: whitesmoke;
 }
 
-.game-panel-button, .game-panel-next {
+.game-panel-button, .game-panel-next, .game-panel-radio {
     height: 5vh;
     line-height: 5vh;
     width: 37vh;
     padding-left: 1vh;
     padding-right: 1vh;
-    vertical-align: middle;
+    display: block;
     overflow: hidden;
     text-decoration: none;
     text-align: left;
@@ -111,7 +112,16 @@ canvas {
     bottom: 5vh;
 }
 
-.game-panel-button:hover, .game-panel-next:hover {
+.game-panel-radio input {
+    position: absolute;
+    opacity: 0;
+}
+
+.game-panel-radio input:checked ~ div {
+    background-color: lightgreen;
+}
+
+.game-panel-button:hover, .game-panel-next:hover, .game-panel-radio:hover div {
     background-color: #ccc;
 }
 

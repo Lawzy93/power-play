@@ -1,9 +1,8 @@
 const kingdom = new Kingdom();
-
 const used_ids = {};
-const player = new Player(getId());
-
-const ai_people = {};
+const player = new Player(getId(), kingdom);
+player.setJob('Slave');
+player.location.slaves.push(player);
 
 const cx = document.getElementById('canvas').getContext('2d');
 const menu_d = document.getElementById('day');
@@ -11,6 +10,9 @@ const menu_h = document.getElementById('health');
 const menu_$ = document.getElementById('money');
 const menu_j = document.getElementById('job');
 const menu_n = document.getElementById('name');
+const panel_a0 = document.getElementById('action0_text');
+const panel_a1 = document.getElementById('action1_text');
+const panel_a2 = document.getElementById('action2_text');
 let open_level = kingdom;
 let day = 0;
 
@@ -49,6 +51,10 @@ function loadMenu() {
     menu_$.innerText = player.money;
     menu_j.innerText = player.job;
     menu_n.innerText = player.name;
+
+    panel_a0.innerText = player.day_actions[0];
+    panel_a1.innerText = player.day_actions[1];
+    panel_a2.innerText = player.day_actions[2];
 }
 
 function loadMap(level) {
@@ -58,9 +64,6 @@ function loadMap(level) {
         document.getElementById(i).onclick = null;
         if (level.map[i] != undefined) {
             draw_tile(level.map[i].sprite, i, 0, 0);
-            if (level.map[i].lord != undefined) {
-                draw_person(level.map[i].lord, i);
-            }
             if (level.map[i].type != 'building') {
                 document.getElementById(i).onclick = (e) => {
                     loadMap(open_level.map[e.srcElement.id]);
@@ -72,11 +75,21 @@ function loadMap(level) {
     }
 
     if (level.king != undefined) {
-        draw_person(level.king, 0);
+        draw_person(level.king, 'r');
     } else if (level.lord != undefined) {
-        draw_person(level.lord, 0);
+        draw_person(level.lord, 'r');
     } else if (level.owner != undefined) {
-        draw_person(level.owner, 0);
+        draw_person(level.owner, 'r');
+    }
+
+    for(let i = 0; i < 16; i++) {
+        if (level.map[i] != undefined) {
+            if (level.map[i].lord != undefined) {
+                draw_person(level.map[i].lord, i);
+            } else if (level.map[i].owner != undefined) {
+                draw_person(level.map[i].owner, i);
+            }
+        } 
     }
 }
 
@@ -88,6 +101,11 @@ function goUpLevel() {
 
 function nextDay() {
     day++;
+
+    let checked_day_action = document.querySelector('input[name="day-action"]:checked');
+    if (checked_day_action == null) checked_day_action = {value: '0', checked: true};
+    player.processAction(checked_day_action.value);
+    checked_day_action.checked = false;
 
     player.dailyUpdate();
     if (player.health == 0) gameOver();
