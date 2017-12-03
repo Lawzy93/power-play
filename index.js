@@ -2,7 +2,6 @@ const kingdom = new Kingdom();
 const used_ids = {};
 const player = new Player(getId(), kingdom);
 player.setJob('Slave');
-player.location.slaves.push(player);
 
 const cx = document.getElementById('canvas').getContext('2d');
 const menu_d = document.getElementById('day');
@@ -14,7 +13,7 @@ const panel_a0 = document.getElementById('action0_text');
 const panel_a1 = document.getElementById('action1_text');
 const panel_a2 = document.getElementById('action2_text');
 const panel_ea = document.getElementById('extra-actions');
-let open_level = kingdom;
+let open_level = player.location;
 let day = 0;
 
 function getId() {
@@ -83,7 +82,7 @@ function loadMap(level) {
     for(let i = 0; i < 16; i++) {
         document.getElementById(i).onclick = null;
         if (level.map[i] != undefined) {
-            draw_tile(level.map[i].sprite, i, 0, 0);
+            draw_tile(level.map[i].sprite, i);
             if (level.map[i].type != 'building') {
                 document.getElementById(i).onclick = (e) => {
                     loadMap(open_level.map[e.srcElement.id]);
@@ -102,12 +101,29 @@ function loadMap(level) {
         draw_person(level.owner, 'r');
     }
 
+    if (level.manager != undefined) {
+        draw_person(level.manager, 'r');
+    }
+
+    if (level.workers != undefined && level.slaves != undefined) {
+        for (let i = 0; i < level.workers.length; i++) {
+            draw_person(level.workers[i], 'r')
+        }
+
+        for (let i = 0; i < level.slaves.length; i++) {
+            draw_person(level.slaves[i], 'r')
+        }
+    }
+
     for(let i = 0; i < 16; i++) {
         if (level.map[i] != undefined) {
             if (level.map[i].lord != undefined) {
                 draw_person(level.map[i].lord, i);
             } else if (level.map[i].owner != undefined) {
                 draw_person(level.map[i].owner, i);
+            }
+            if (level.map[i].manager != undefined) {
+                draw_person(level.map[i].manager, i);
             }
         } 
     }
@@ -125,7 +141,6 @@ function nextDay() {
     let checked_day_action = document.querySelector('input[name="day-action"]:checked');
     if (checked_day_action == null) checked_day_action = {value: '0', checked: true};
     player.processAction(checked_day_action.value);
-    checked_day_action.checked = false;
 
     let checked_extra_actions = document.querySelectorAll('input[name="extra-action"]:checked');
     let extra_actions = [];
@@ -135,9 +150,7 @@ function nextDay() {
     }
     player.processExtraActions(extra_actions);
 
-    player.dailyUpdate();
-    if (player.health == 0) gameOver();
-
+    // Run Daily Update for all Ai and Player
     if (kingdom.king != undefined) {
         kingdom.king.dailyUpdate();
     }

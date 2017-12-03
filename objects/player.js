@@ -17,11 +17,24 @@ class Player extends Person {
         } while (!location_found);
 
         super(id, location);
+        this.sprite = img_person_1;
     }
 
     setJob(job) {
         super.setJob(job);
         this.day_actions = Player.getDayActions(job);
+    }
+
+    adjustHealth(amount) {
+        super.adjustHealth(amount);
+        if (this.health == 0) {
+            alert('You died');
+            location.reload();
+        }
+    }
+
+    changeName() {
+        this.name = prompt('Enter New Name:', this.name);
     }
 
     static getDayActions(job) {

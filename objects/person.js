@@ -8,7 +8,7 @@ class Person {
         this.id = id;
         this.location = location;
         this.job = undefined;
-        this.actions_queue = ['chname'];
+        this.actions_queue = [];
     }
 
     adjustHealth(amount) {
@@ -33,6 +33,13 @@ class Person {
             this.findReplacement();
         }
         this.job = job;
+        if (job == 'Worker') this.location.workers.push(this);
+        if (job == 'Slave') this.location.slaves.push(this);
+        if (job == 'Manager') this.location.manager = this;
+        if (job == 'Owner') this.location.owner = this;
+        if (job == 'Lord') this.location.lord = this;
+        if (job == 'King') this.location.king = this;
+
         if (job == 'Slave' || this.name == undefined) this.name = this.id;
     }
 
@@ -45,13 +52,13 @@ class Person {
             case 'Slave':
                 best = new Ai(getId(), this.location);
                 best.setJob('Slave');
-                this.location.slaves.push(best);
                 console.log(best.name + ' was purchased as a new slave');
                 do {
                     if (this.location.slaves[i].id == this.id) {
                         this.location.slaves.splice(i, 1);
                         found = true;
                     }
+                    i++;
                 } while (!found);
                 break;
             case 'Worker':
@@ -64,13 +71,13 @@ class Person {
                 }
                 if (best == undefined) best = new Ai(getId(), this.location);
                 best.setJob('Worker');
-                this.location.workers.push(best);
                 console.log(best.name + ' became a worker');
                 do {
                     if (this.location.workers[i].id == this.id) {
                         this.location.workers.splice(i, 1);
                         found = true;
                     }
+                    i++;
                 } while (!found);
                 break;
             case 'Manager':
@@ -83,7 +90,6 @@ class Person {
                 }
                 if (best == undefined) best = new Ai(getId(), this.location);
                 best.setJob('Manager');
-                this.location.manager = best;
                 console.log(best.name + ' became a manager');
                 break;
             case 'Owner':
@@ -101,7 +107,6 @@ class Person {
                 }
                 if (best == undefined) best = new Ai(getId(), this.location);
                 best.setJob('Owner');
-                this.location.owner = best;
                 console.log(best.name + ' became an owner');
                 break;
         }
@@ -109,6 +114,22 @@ class Person {
 
     dailyUpdate() {
         this.adjustHealth(Math.floor(Math.random() * 8) - 3);
+
+        if (this.job != 'Slave' && this.id == this.name) {
+            if(Math.random() > 0.33) {
+                this.actions_queue.push('chname');
+            }
+        }
+
+        if (this.job == 'Manager') {
+            for (let i = 0; i < this.location.slaves.length; i++) {
+                if (this.influence[this.location.slaves[i].id] > 8) {
+                    if (this.location.worker_cap > this.location.workers.length) {
+                        this.location.slaves[i].actions_queue.push('promwk');
+                    }
+                }
+            }
+        }
     }
 
     processAction(action) {
@@ -157,12 +178,9 @@ class Person {
     }
 
     processExtraActions(actions) {
+        this.actions_queue = [];
         for (let i = 0; i < actions.length; i++) {
-            switch (actions[i]) {
-                case 'chname':
-                    this.name = prompt('Enter New Name:', this.name);
-                    break;
-            }
+            ea_action(actions[i], this);
         }
     }
 }
