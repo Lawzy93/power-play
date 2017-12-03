@@ -13,6 +13,7 @@ const menu_n = document.getElementById('name');
 const panel_a0 = document.getElementById('action0_text');
 const panel_a1 = document.getElementById('action1_text');
 const panel_a2 = document.getElementById('action2_text');
+const panel_ea = document.getElementById('extra-actions');
 let open_level = kingdom;
 let day = 0;
 
@@ -55,6 +56,25 @@ function loadMenu() {
     panel_a0.innerText = player.day_actions[0];
     panel_a1.innerText = player.day_actions[1];
     panel_a2.innerText = player.day_actions[2];
+
+    panel_ea.innerHTML = '';
+    for (let i = 0; i < player.actions_queue.length; i++) {
+        let e = document.createElement('label');
+        e.className = 'game-panel-select'
+
+        let e_i = document.createElement('input');
+        e_i.type = 'checkbox';
+        e_i.name = 'extra-action';
+        e_i.value = player.actions_queue[i];
+        
+        let e_d = document.createElement('div');
+        e_d.innerText = ea_name(player.actions_queue[i]);
+
+        e.appendChild(e_i);
+        e.appendChild(e_d);
+        
+        panel_ea.appendChild(e);
+    }
 }
 
 function loadMap(level) {
@@ -107,25 +127,39 @@ function nextDay() {
     player.processAction(checked_day_action.value);
     checked_day_action.checked = false;
 
+    let checked_extra_actions = document.querySelectorAll('input[name="extra-action"]:checked');
+    let extra_actions = [];
+    for (let i = 0; i < checked_extra_actions.length; i++) {
+        extra_actions.push(checked_extra_actions[i].value);
+        checked_extra_actions[i].checked = false;
+    }
+    player.processExtraActions(extra_actions);
+
     player.dailyUpdate();
     if (player.health == 0) gameOver();
 
     if (kingdom.king != undefined) {
         kingdom.king.dailyUpdate();
-        if (kingdom.king.health == 0) kingdom.king = undefined;
     }
     
     for (let town = 0; town < 16; town++) {
         if (kingdom.map[town] != undefined) {
             if (kingdom.map[town].lord != undefined){
                 kingdom.map[town].lord.dailyUpdate();
-                if (kingdom.map[town].lord.health == 0) kingdom.map[town].lord = undefined;
             }
             for (let plot = 0; plot < 16; plot++) {
                 if (kingdom.map[town].map[plot] != undefined) {
                     if (kingdom.map[town].map[plot].owner != undefined) {
                         kingdom.map[town].map[plot].owner.dailyUpdate();
-                        if (kingdom.map[town].map[plot].owner.health == 0) kingdom.map[town].map[plot].owner = undefined;
+                    }
+                    if (kingdom.map[town].map[plot].manager != undefined) {
+                        kingdom.map[town].map[plot].manager.dailyUpdate();
+                    }
+                    for (let i = 0; i < kingdom.map[town].map[plot].workers.length; i++) {
+                        kingdom.map[town].map[plot].workers[i].dailyUpdate();
+                    }
+                    for (let i = 0; i < kingdom.map[town].map[plot].slaves.length; i++) {
+                        kingdom.map[town].map[plot].slaves[i].dailyUpdate();
                     }
                 }
             }

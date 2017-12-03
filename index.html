@@ -10,6 +10,7 @@
         <script src="js/image_loader.js"></script>
         <script src="js/draw_functions.js"></script>
         <script src="js/ai_functions.js"></script>
+        <script src="js/extra_actions.js"></script>
 
         <script src="objects/person.js"></script>
         <script src="objects/player.js"></script>
@@ -59,20 +60,20 @@
                 <div class="game-square" id="15"></div>
             </div>
             <div class="game-panel">
-                <label class="game-panel-radio">
+                <label class="game-panel-select">
                     <input type="radio" name="day-action" value="0" />
                     <div id="action0_text">Option 1</div>
                 </label>
-                <label class="game-panel-radio">
+                <label class="game-panel-select">
                     <input type="radio" name="day-action" value="1" />
                     <div id="action1_text">Option 2</div>
                 </label>
-                <label class="game-panel-radio">
+                <label class="game-panel-select">
                     <input type="radio" name="day-action" value="2" />
                     <div id="action2_text">Option 3</div>
                 </label>
-                
-                <hr>
+
+                <div class="game-panel-scroll" id="extra-actions"></div>
 
                 <div class="game-panel-next" onclick="nextDay();">Next Day --></div>
             </div>

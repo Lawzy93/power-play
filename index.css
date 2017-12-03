@@ -10,6 +10,10 @@ body {
     background-color: slategray;
 }
 
+div {
+    font-size: 3vh;
+}
+
 .button, .icon, .text{
     height: 5vh;
     line-height: 5vh;
@@ -46,6 +50,7 @@ body {
 header {
     width: 120vh;
     height: 10vh;
+    font-size: 8vh;
     background-color: lightblue;
 }
 
@@ -92,7 +97,7 @@ canvas {
     background-color: whitesmoke;
 }
 
-.game-panel-button, .game-panel-next, .game-panel-radio {
+.game-panel-button, .game-panel-next, .game-panel-select {
     height: 5vh;
     line-height: 5vh;
     width: 37vh;
@@ -112,17 +117,27 @@ canvas {
     bottom: 5vh;
 }
 
-.game-panel-radio input {
+.game-panel-select input {
     position: absolute;
     opacity: 0;
 }
 
-.game-panel-radio input:checked ~ div {
+.game-panel-select input:checked ~ div {
     background-color: lightgreen;
 }
 
-.game-panel-button:hover, .game-panel-next:hover, .game-panel-radio:hover div {
+.game-panel-button:hover, .game-panel-next:hover, .game-panel-select:hover div {
     background-color: #ccc;
+}
+
+.game-panel-scroll {
+    height: 58vh;
+    width: 39vh;
+    border-top: 1vh solid slategray;
+    border-bottom: 1vh solid slategray;
+
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .float-container::after {

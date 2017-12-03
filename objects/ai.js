@@ -1,6 +1,8 @@
 class Ai extends Person {
     constructor(id, location) {
         super(id, location);
+
+        this.lazyness = Math.random();
     }
     
     adjustHealth(amount) {
@@ -9,6 +11,15 @@ class Ai extends Person {
             this.findReplacement();
             this.kill();
         }
+    }
+
+    dailyUpdate() {
+        super.dailyUpdate();
+
+        let day_action = Math.floor(Math.random() * 3);
+        if (this.lazyness > Math.random()) day_action = 0;
+        this.processAction(day_action);
+
     }
 
     kill() {

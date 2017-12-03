@@ -8,6 +8,7 @@ class Person {
         this.id = id;
         this.location = location;
         this.job = undefined;
+        this.actions_queue = ['chname'];
     }
 
     adjustHealth(amount) {
@@ -103,7 +104,6 @@ class Person {
                 this.location.owner = best;
                 console.log(best.name + ' became an owner');
                 break;
-
         }
     }
 
@@ -145,7 +145,7 @@ class Person {
                     if (Math.random() < 0.3) {
                         this.money += 2;
                         this.location.owner.money += -2;
-                        console.log('You were payed a bonus of $2 for your hard work');
+                        if (this.id == player.id) console.log('You were payed a bonus of $2 for your hard work');
                     }
                     this.adjustHealth(Math.floor(Math.random() * 3) - 5);
                     this.location.manager.adjustInfluence(this.id, 1);
@@ -153,6 +153,16 @@ class Person {
                     this.location.manager.adjustPower(this.id, 1);
                 }
                 break;
+        }
+    }
+
+    processExtraActions(actions) {
+        for (let i = 0; i < actions.length; i++) {
+            switch (actions[i]) {
+                case 'chname':
+                    this.name = prompt('Enter New Name:', this.name);
+                    break;
+            }
         }
     }
 }
