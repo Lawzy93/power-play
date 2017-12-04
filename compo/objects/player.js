@@ -29,7 +29,7 @@ class Player extends Person {
         super.adjustHealth(amount);
         if (this.health == 0) {
             alert('You died');
-            location.reload();
+            window.location = '../index.html';
         }
     }
 

@@ -1,0 +1,73 @@
+.splash {
+    width: 80vh;
+    height: 80vh;
+    background-color: whitesmoke;
+
+    padding-left: 20vh;
+    padding-right: 20vh;
+    padding-top: 2.5vh;
+    padding-bottom: 2.5vh;
+
+}
+
+.splash-button {
+    margin-bottom: 5vh;
+
+    width: 80vh;
+    height: 15vh;
+    line-height: 15vh;
+
+    padding-left: 2.5vh;
+    padding-right: 2.5vh;
+
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    background-color: #f8f7f0;
+
+    border-radius: 3vh;
+    border: 0.5vh solid black;
+    font-size: 7vh;
+}
+
+.splash-button:hover {
+    background-color: rgba(130, 190, 243, 0.281);
+}
+
+.splash-button-disabled {
+    color: #555555;
+}
+
+.splash-button-disabled:hover {
+    background-color: rgba(151, 151, 151, 0.281);
+}
+
+.splash-button-icon {
+    float: left;
+    width: 10vh;
+    height: 10vh;
+
+    padding-top: 2.5vh;
+    padding-bottom: 2.5vh;
+    padding-right: 2.5vh;
+}
+
+@media screen and (min-height: 100vw) { /* height >= width (portrait): work in vw units*/
+    .splash {
+        width: 120vh;
+        height: 85vh;
+    }
+    
+    .splash_button {
+        padding-left: 20vh;
+        padding-right: 20vh;
+        padding-top: 2.5vh;
+        padding-bottom: 2.5vh;
+
+        width: 80vh;
+        height: 15vh;
+    }
+
+
+}

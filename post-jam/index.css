@@ -1,0 +1,200 @@
+/* height < width (landscape): work in vh units */
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: auto;
+    background-color: rgb(17, 20, 22);
+}
+
+div {
+    font-size: 3vh;
+    font-family: 'Indie Flower', cursive;
+}
+
+.button, .icon, .text, .text-fade{
+    height: 5vh;
+    line-height: 5vh;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    cursor: default;
+}
+
+.icon {
+    color: darkred;
+    width: 5vh;
+}
+
+.icon img, .button img {
+    width: 100%;
+}
+
+.button {
+    width: 5vh;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #ccc;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+header {
+    width: 120vh;
+    height: 10vh;
+    font-size: 8vh;
+    font-family: 'Indie Flower', cursive;
+    background-color: lightblue;
+}
+
+.game-menu, .game-status {
+    width: 116vh; /* 120 - 4 from padding */
+    height: 5vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    background-color: lightgray;
+}
+
+.game-status .text {
+    color: rgba(0, 0, 0 1);
+    -webkit-transition: color 1s;
+    transition: color 1s;
+
+}
+
+.game-status .fade {
+    color: rgba(0, 0, 0, 0);
+}
+
+.game-map {
+    width: 80vh;
+    height: 80vh;
+    float: left;
+}
+
+.game-canvas {
+    width: 80vh;
+    height: 80vh;
+    z-index: -1;
+    position: absolute;
+}
+
+canvas {
+    width: 100%;
+}
+
+.game-square {
+    width: 20vh;
+    height: 20vh;
+    float: left;
+    cursor: pointer;
+}
+
+.game-square:hover {
+    background-color: rgba(130, 190, 243, 0.281);
+}
+
+.game-panel {
+    width: 39vh;
+    height: 80vh;
+    float: right;
+    background-color: whitesmoke;
+}
+
+.game-panel-button, .game-panel-next, .game-panel-select {
+    height: 5vh;
+    line-height: 5vh;
+    width: 37vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    display: block;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: left;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.game-panel-next {
+    text-align: right;
+    position: absolute;
+    bottom: 5vh;
+}
+
+.game-panel-select input {
+    position: absolute;
+    opacity: 0;
+}
+
+.game-panel-select input:checked ~ div {
+    background-color: lightgreen;
+}
+
+.game-panel-button:hover, .game-panel-next:hover, .game-panel-select:hover div {
+    background-color: #ccc;
+}
+
+.game-panel-scroll {
+    height: 58vh;
+    width: 39vh;
+    border-top: 1vh solid rgb(17, 20, 22);
+    border-bottom: 1vh solid rgb(17, 20, 22);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.float-container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+@media screen and (min-height: 100vw) { /* height >= width (portrait): work in vw units*/
+    header {
+        width: 60vw;
+        height: 10vw;
+    }
+
+    .button, .icon{
+        width: 5vw;
+        height: 5vw;
+    }
+    
+    .game-menu, .game-status {
+        width: 60vw;
+        height: 5vw;
+    }
+    
+    .game-map, .game-canvas{
+        width: 40vw;
+        height: 40vw;
+    }
+
+    .game-square {
+        width: 10vw;
+        height: 10vw;
+    }
+    
+    .game-panel {
+        width: 20vw;
+        height: 40vw;
+    }
+
+
+}
