@@ -7,16 +7,19 @@ html {
 
 body {
     margin: auto;
-    background-color: slategray;
+    background-color: rgb(17, 20, 22);
 }
 
 div {
     font-size: 3vh;
+    font-family: 'Indie Flower', cursive;
 }
 
-.button, .icon, .text{
+.button, .icon, .text, .text-fade{
     height: 5vh;
     line-height: 5vh;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
     vertical-align: middle;
     overflow: hidden;
     text-decoration: none;
@@ -28,6 +31,10 @@ div {
 .icon {
     color: darkred;
     width: 5vh;
+}
+
+.icon img, .button img {
+    width: 100%;
 }
 
 .button {
@@ -51,6 +58,7 @@ header {
     width: 120vh;
     height: 10vh;
     font-size: 8vh;
+    font-family: 'Indie Flower', cursive;
     background-color: lightblue;
 }
 
@@ -60,6 +68,17 @@ header {
     padding-left: 2vh;
     padding-right: 2vh;
     background-color: lightgray;
+}
+
+.game-status .text {
+    color: rgba(0, 0, 0 1);
+    -webkit-transition: color 1s;
+    transition: color 1s;
+
+}
+
+.game-status .fade {
+    color: rgba(0, 0, 0, 0);
 }
 
 .game-map {
@@ -133,8 +152,8 @@ canvas {
 .game-panel-scroll {
     height: 58vh;
     width: 39vh;
-    border-top: 1vh solid slategray;
-    border-bottom: 1vh solid slategray;
+    border-top: 1vh solid rgb(17, 20, 22);
+    border-bottom: 1vh solid rgb(17, 20, 22);
 
     overflow-x: hidden;
     overflow-y: auto;

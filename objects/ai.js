@@ -35,7 +35,7 @@ class Ai extends Person {
             case 'Lord':
             case 'King':
                 // the find replacement method will remove the person
-                console.log(this.name + ', a ' + this.job + ', died.');
+                status_add(this.name + ', a ' + this.job + ', died.');
                 break;
         }
     }

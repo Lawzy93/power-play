@@ -180,6 +180,7 @@ function nextDay() {
     }
     loadMenu();
     loadMap(open_level);
+    status_reset_timer();
 }
 
 function gameOver() {

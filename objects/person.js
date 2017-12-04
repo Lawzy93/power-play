@@ -24,8 +24,11 @@ class Person {
 
     adjustPower(person_id, amount) {
         if (this.power[person_id] == undefined) this.power[person_id] = 0;
+
+        if (this.power[person_id] == 0.001) this.power[person_id] = 0;
         this.power[person_id] += amount;
         this.power[person_id] = Math.min(5, Math.max(-5, this.power[person_id]));
+        if (this.power[person_id] == 0) this.power[person_id] = 0.001;
     }
 
     setJob(job) {
@@ -50,9 +53,11 @@ class Person {
         let i = 0;
         switch (this.job) {
             case 'Slave':
-                best = new Ai(getId(), this.location);
-                best.setJob('Slave');
-                console.log(best.name + ' was purchased as a new slave');
+                if (this.location.slaves.length < this.location.slave_cap) {
+                    best = new Ai(getId(), this.location);
+                    best.setJob('Slave');
+                    status_add(best.name + ' was purchased as a new slave');
+                }
                 do {
                     if (this.location.slaves[i].id == this.id) {
                         this.location.slaves.splice(i, 1);
@@ -71,7 +76,7 @@ class Person {
                 }
                 if (best == undefined) best = new Ai(getId(), this.location);
                 best.setJob('Worker');
-                console.log(best.name + ' became a worker');
+                status_add(best.name + ' became a worker');
                 do {
                     if (this.location.workers[i].id == this.id) {
                         this.location.workers.splice(i, 1);
@@ -90,7 +95,7 @@ class Person {
                 }
                 if (best == undefined) best = new Ai(getId(), this.location);
                 best.setJob('Manager');
-                console.log(best.name + ' became a manager');
+                status_add(best.name + ' became a manager');
                 break;
             case 'Owner':
                 for (let i = 0; i < this.location.workers.length; i++) {
@@ -107,7 +112,7 @@ class Person {
                 }
                 if (best == undefined) best = new Ai(getId(), this.location);
                 best.setJob('Owner');
-                console.log(best.name + ' became an owner');
+                status_add(best.name + ' became an owner');
                 break;
         }
     }
@@ -121,7 +126,9 @@ class Person {
             }
         }
 
-        if (this.job == 'Manager') {
+        if (this.job == 'Slave') {
+            this.actions_queue.push('brmapr');
+        } else if (this.job == 'Manager') {
             for (let i = 0; i < this.location.slaves.length; i++) {
                 if (this.influence[this.location.slaves[i].id] > 8) {
                     if (this.location.worker_cap > this.location.workers.length) {
@@ -166,7 +173,7 @@ class Person {
                     if (Math.random() < 0.3) {
                         this.money += 2;
                         this.location.owner.money += -2;
-                        if (this.id == player.id) console.log('You were payed a bonus of $2 for your hard work');
+                        if (this.id == player.id) status_add('You were payed a bonus of $2 for your hard work');
                     }
                     this.adjustHealth(Math.floor(Math.random() * 3) - 5);
                     this.location.manager.adjustInfluence(this.id, 1);

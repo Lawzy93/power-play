@@ -37,6 +37,10 @@ class Player extends Person {
         this.name = prompt('Enter New Name:', this.name);
     }
 
+    getBribe() {
+        return prompt('How much?', '0');
+    }
+
     static getDayActions(job) {
         switch (job) {
             case 'Slave':
