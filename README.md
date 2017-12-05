@@ -1,5 +1,5 @@
 # Power Play
-My first attempt at a Ludum Dare
+My first attempt at a Ludum Dare.
 for Ludum Dare #40 - The more you have, the worse it is.
 
 ## The Idea
