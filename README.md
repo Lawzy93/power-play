@@ -2,7 +2,6 @@
 My first attempt at a Ludum Dare
 for Ludum Dare #40 - The more you have, the worse it is.
 
-
 ## The Idea
 You start as a slave, hoping to work your way up in the world, maybe even become king. But what will you do to get there? Will you work hard and honestly claw your way to the top or will you let your power and influence corrupt you on the way? What lines would you cross to get to the top?
 
@@ -21,7 +20,7 @@ The game's goal was to test if the more power you have, the worse your morals wo
 - Map Generation
   - Visible Buildings
   - Visible People
-  - Zoom out from Plot level, to Town, to Kingdom
+  - Zoom out from Plot level to Town to Kingdom
   - 256 possible Plots
   - 4096 squares
 - Working Status Bar
@@ -31,8 +30,8 @@ The game's goal was to test if the more power you have, the worse your morals wo
 ## What's Not In The Game
 - Proper Gameplay
   - Needs more (read BASICALLY ALL) extra actions to test use of power
-  - Needs implementation of Manager, Owner, Lord and King
-  - Needs ability to progress between, or be kicked back in Jobs
+  - Needs implementation of Manager, Owner, Lord, and King
+  - Needs the ability to progress between, or be kicked back in Jobs
 - Complete AI
   - Need to be able to complete their own extra actions
 - Build Mechanic
@@ -50,6 +49,11 @@ The game's goal was to test if the more power you have, the worse your morals wo
   - Currently looks horrible if screen height is greater than width
 - Better Input/Info Panels
   - Needs custom dialog box
-  - Needs ability to see influence and power over AI's
-  - Needs ability to check status logs (For now can be viewed in a dev console using `status_log`)
+  - Needs the ability to see influence and power over AI's
+  - Needs the ability to check status logs (For now can be viewed in a dev console using `status_log`)
 - Any Audio Whatsoever (This was very low on my priorities list)
+
+## Post-Jam Updates
+I'm planning to continue working on this game and have created a little menu screen to allow people to chose the original compo game or the post-jam updated version. (This was done after submission) Feel free to review the Compo version, but note that it is far from complete. The Post-Jam should be a much more enjoyable experience.
+
+### Currently there have been no updates.
