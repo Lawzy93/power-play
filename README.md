@@ -1,6 +1,7 @@
 # Power Play
 My first attempt at a Ludum Dare.
-for Ludum Dare #40 - The more you have, the worse it is.
+
+For Ludum Dare #40 - The more you have, the worse it is.
 
 ## The Idea
 You start as a slave, hoping to work your way up in the world, maybe even become king. But what will you do to get there? Will you work hard and honestly claw your way to the top or will you let your power and influence corrupt you on the way? What lines would you cross to get to the top?
