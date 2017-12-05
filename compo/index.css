@@ -71,7 +71,7 @@ header {
 }
 
 .game-status .text {
-    color: rgba(0, 0, 0 1);
+    color: rgba(0, 0, 0, 1);
     -webkit-transition: color 1s;
     transition: color 1s;
 
