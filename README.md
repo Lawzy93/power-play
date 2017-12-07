@@ -57,4 +57,8 @@ The game's goal was to test if the more power you have, the worse your morals wo
 ## Post-Jam Updates
 I'm planning to continue working on this game and have created a little menu screen to allow people to chose the original compo game or the post-jam updated version. (This was done after submission) Feel free to review the Compo version, but note that it is far from complete. The Post-Jam should be a much more enjoyable experience.
 
-### Currently there have been no updates.
+Post-Jam plans can be seen at https://github.com/Lawzy93/power-play/projects/1
+
+### Better Pop-Up Dialogues
+- Popups are no longer web browser default one and look much more a part of the game.
+- This lays the foundations for Influence and Power View and Status Log View
