@@ -126,6 +126,49 @@ function goUpLevel() {
     }
 }
 
+function openInfluence() {
+    let elements = [];
+    
+    switch (player.job) {
+        case 'Slave':
+        case 'Worker':
+        case 'Manager':
+            if (player.location.owner != undefined && player.location.owner != player) elements.push(inf_toText(player.location.owner));
+            if (player.location.manager != undefined && player.location.owner != player) elements.push(inf_toText(player.location.manager));
+
+            if (player.location.workers != undefined && player.location.slaves != undefined) {
+                for (let i = 0; i < player.location.workers.length; i++) {
+                    if (player.location.workers[i] != player) elements.push(inf_toText(player.location.workers[i]));
+                }
+
+                for (let i = 0; i < player.location.slaves.length; i++) {
+                    if (player.location.slaves[i] != player) elements.push(inf_toText(player.location.slaves[i]));
+                }
+            }
+
+            break;
+        // TODO: Add cases for Owner, Lord and King
+        //       Consider using averagerating for lower classes
+    }
+
+    popup_immediate(popup_create_list('Influence & Power', elements));
+}
+
+function inf_toText(person) {
+    let influence = person.influence[player.id];
+    if (influence == undefined) influence = 0;
+
+    let power = person.power[player.id];
+    if (power == undefined || power == 0.001) power = 0;
+
+    let string = person.job + ' - ';
+    string += person.name + ': ';
+    string += 'Influence ' + influence + ' ';
+    string += 'Power (Respect +/- Fear) ' + power;
+
+    return string;
+}
+
 function nextDay() {
     day++;
 

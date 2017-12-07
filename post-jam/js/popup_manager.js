@@ -43,6 +43,7 @@ function popup_create_list(title, items) {
         reject: function () {},
     }
 
+    //if (items.length == 0) items.push('No items in List');
     for (let i = 0; i < items.length; i++) {
         popup.elements.push({type: 'text', value: items[i]});
     }

@@ -68,3 +68,6 @@ Post-Jam plans can be seen at https://github.com/Lawzy93/power-play/projects/1
 
 ### Portrait View CSS
 - The game now scales well for all view window sizes
+
+### Influence and Power View
+- By clicking on the scroll icon you can view your influence and power with others.
