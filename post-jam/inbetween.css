@@ -1,0 +1,112 @@
+@media screen and (min-height: 84vw) {
+    body {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        font-size: 3vw;
+    }
+
+    .button, .icon, .text, .text-fade{
+        line-height: 5vw;
+        padding-left: 0.5vw;
+        padding-right: 0.5vw;
+    }
+
+    .icon, .button {
+        width: 5vw;
+    }
+    
+    header {
+        height: 10vw;
+        font-size: 8vw;
+    }
+
+    .game-menu, .game-status {
+        width: 96vw;
+        height: 5vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+    
+    .game-map, .game-canvas{
+        width: 65vw;
+        height: 65vw;
+    }
+    
+    .game-panel {
+        width: calc(100% - 66vw);
+        height: 65vw;
+    }
+
+    .game-panel-button, .game-panel-next, .game-panel-select {
+        height: 5vw;
+        line-height: 5vw;
+        width: 32vw;
+        padding-left: 1vw;
+        padding-right: 1vw;
+    }
+
+    .game-panel-next {
+        bottom: calc(100vh - 80vw)
+    }
+
+    .game-panel-scroll {
+        height: 43vw;
+        border-top-width: 1vw;
+        border-bottom-width: 1vw;
+    }
+
+    .game-popup {
+        max-height: 65vw;
+        width: 90vw;
+        border-width: 1vw;
+        left: 4vw;
+        top: 19vw;
+    }
+
+    .game-popup-title {
+        height: 8vw;
+        width: 85vw;
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+
+        line-height: 8vw;
+        font-size: 6vw;
+    }
+
+    .game-popup-content {
+        max-height: 50vw;
+        width: 85vw;
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+    }
+
+    .game-popup-content input {
+        height: 5vw;
+        padding: 1vw 3vw;
+        border-width: 0.5vw;
+        border-radius: 1vw;
+        font-size: 3vw;
+    }
+
+    .game-popup-content div {
+        height: 5vw;
+        line-height: 5vw;
+    }
+
+    .game-popup-actions {
+        height: 5vw;
+        padding-top: 1vw;
+        padding-bottom: 1vw;
+    }
+
+    .game-popup-button {
+        width: 10vw;
+        line-height: 5vw;
+        padding-left: 0.5vw;
+        padding-right: 0.5vw;
+    
+        margin-left: 2.5vw;
+        margin-right: 2.5vw;
+    }
+}

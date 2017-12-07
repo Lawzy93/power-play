@@ -65,3 +65,6 @@ Post-Jam plans can be seen at https://github.com/Lawzy93/power-play/projects/1
 
 ### Status Log View
 - Click on the status bar to view all previous statuses
+
+### Portrait View CSS
+- The game now scales well for all view window sizes
