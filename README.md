@@ -62,3 +62,6 @@ Post-Jam plans can be seen at https://github.com/Lawzy93/power-play/projects/1
 ### Better Pop-Up Dialogues
 - Popups are no longer web browser default one and look much more a part of the game.
 - This lays the foundations for Influence and Power View and Status Log View
+
+### Status Log View
+- Click on the status bar to view all previous statuses

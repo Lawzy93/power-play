@@ -6,6 +6,7 @@ const popup_action_resolve = document.getElementById('popup-action-resolve');
 const popup_action_reject = document.getElementById('popup-action-reject');
 const popup_queue = [];
 let popup_next = false;
+let popup_single = false;
 let popup_queue_promise;
 
 function popup_create(title, elements, resolve_text, reject_text, resolve, reject) {
@@ -54,6 +55,7 @@ function popup_enqueue(popup) {
 
 function popup_immediate(popup) {
     popup_queue.unshift(popup);
+    popup_single = true;
     popup_open(popup);
 }
 
@@ -87,7 +89,8 @@ function popup_resolve() {
     if (popup_next) {
         popup_queue_next();
     } else {
-        popup_queue_promise.finish();
+        if (!popup_single) popup_queue_promise.finish();
+        else popup_single = false;
     }
 }
 
@@ -98,7 +101,8 @@ function popup_reject() {
     if (popup_next) {
         popup_queue_next();
     } else {
-        popup_queue_promise.finish();
+        if (!popup_single) popup_queue_promise.finish();
+        else popup_single = false;
     }
 }
 

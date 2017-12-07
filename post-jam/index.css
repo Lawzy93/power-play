@@ -166,7 +166,7 @@ canvas {
 }
 
 .game-popup {
-    max-height: 80vh;
+    max-height: 70vh;
     width: 100vh;
     border: 1vh solid #111416;
 
@@ -190,11 +190,14 @@ canvas {
 }
 
 .game-popup-content {
-    max-height: 65vh;
+    max-height: 55vh;
 
     width: 95vh;
     padding-left: 2.5vh;
     padding-right: 2.5vh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .game-popup-content input {

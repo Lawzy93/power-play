@@ -6,11 +6,11 @@ let status_timer = setInterval(status_update, 3000);
 let status_fade_timer;
 
 function status_add(text) {
-    status_log.push(text);
+    status_log.unshift('Day ' + day + ': ' + text);
     if (status_log.length > 100) status_log.shift();
 
     status_queue.push(text);
-    if (status_queue.length > 100) status_queue.shift();
+    if (status_queue.length > 100) status_queue.pop();
 }
 
 function status_update() {
@@ -35,4 +35,9 @@ function status_reset_timer() {
     clearTimeout(status_fade_timer);
     status_timer = setInterval(status_update, 3000);
     status_update();
+}
+
+
+function openStatusLog() {
+    popup_immediate(popup_create_list('Messages', status_log));
 }
