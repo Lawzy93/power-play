@@ -4,7 +4,7 @@ let extra_actions = {
         effort: 0.1,
         evil: 0,
         action: function(e) {
-            e.setInput('New Name', 'Enter New Name:', this.name, function () {
+            e.setInput('New Name', 'Enter New Name:', e.name, function () {
                 this.name = this.getInput();
             });
         }

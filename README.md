@@ -49,7 +49,7 @@ The game's goal was to test if the more power you have, the worse your morals wo
 - CSS for Portrait Views
   - Currently looks horrible if screen height is greater than width
 - Better Input/Info Panels
-  - Needs custom dialog box
+  - Needs custom dialogue box
   - Needs the ability to see influence and power over AI's
   - Needs the ability to check status logs (For now can be viewed in a dev console using `status_log`)
 - Any Audio Whatsoever (This was very low on my priorities list)
